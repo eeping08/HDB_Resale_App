@@ -1,3 +1,11 @@
+import pandas as pd
+
+# Load the data
+data = pd.read_csv('hdb_data.csv')
+
+# Check the first few rows of the data (optional)
+st.write(data.head())
+
 import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
