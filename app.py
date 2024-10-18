@@ -36,7 +36,7 @@ about_us = st.sidebar.button("About Us")
 methodology = st.sidebar.button("Methodology")
 
 if about_us:
-    st.write("**About Us**\n\nThis project helps users find affordable HDB resale flats...")
+    st.write("**About Us**\n\nThis project helps users find affordable HDB resale flats based on their budget in Singapore.")
 
 if methodology:
-    st.write("**Methodology**\n\nWe use data on resale flat prices and ages to provide insights...")
+    st.write("**Methodology**\n\nWe use data on resale flat prices and age of flat to provide insights on the cost of HDB flats around the central part of Singapore.")
