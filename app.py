@@ -1,11 +1,3 @@
-import pandas as pd
-
-# Load the data
-data = pd.read_csv('hdb_data.csv')
-
-# Check the first few rows of the data (optional)
-st.write(data.head())
-
 import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -13,6 +5,12 @@ import seaborn as sns
 
 # Title of the app
 st.title("HDB Resale Flat Explorer")
+
+# Load the data
+data = pd.read_csv('hdb_data.csv')
+
+# Display the data
+st.write(data.head())
 
 # Sidebar for user input
 budget = st.sidebar.number_input("Enter your budget (SGD):", min_value=0)
