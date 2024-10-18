@@ -16,7 +16,7 @@ st.write(data.head())
 budget = st.number_input("Enter your budget:", min_value=0)
 
 # Filter data based on budget
-filtered_data = data[data['Price'] <= budget]
+filtered_data = data[data['resale_price'] <= budget]
 
 # Display the filtered data
 if not filtered_data.empty:
@@ -25,9 +25,9 @@ if not filtered_data.empty:
     
     # Visualization of price distribution
     plt.figure(figsize=(10, 6))
-    sns.histplot(filtered_data['Price'], bins=10, kde=True)
+    sns.histplot(filtered_data['resale_price'], bins=10, kde=True)
     plt.title('Price Distribution of Affordable Houses')
-    plt.xlabel('Price')
+    plt.xlabel('resale_price')
     plt.ylabel('Frequency')
     st.pyplot(plt)  # Use Streamlit to display the plot
 else:
