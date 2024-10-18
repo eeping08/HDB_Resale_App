@@ -12,6 +12,27 @@ data = pd.read_csv('hdb_data.csv')
 # Display the data
 st.write(data.head())
 
+# Input for budget
+budget = st.number_input("Enter your budget:", min_value=0)
+
+# Filter data based on budget
+filtered_data = data[data['Price'] <= budget]
+
+# Display the filtered data
+if not filtered_data.empty:
+    st.write("You can afford the following houses:")
+    st.dataframe(filtered_data)
+    
+    # Visualization of price distribution
+    plt.figure(figsize=(10, 6))
+    sns.histplot(filtered_data['Price'], bins=10, kde=True)
+    plt.title('Price Distribution of Affordable Houses')
+    plt.xlabel('Price')
+    plt.ylabel('Frequency')
+    st.pyplot(plt)  # Use Streamlit to display the plot
+else:
+    st.write("No houses found within your budget.")
+
 # Sidebar for user input
 budget = st.sidebar.number_input("Enter your budget (SGD):", min_value=0)
 flat_age = st.sidebar.slider("Select the maximum age of the flat:", 0, 99)
