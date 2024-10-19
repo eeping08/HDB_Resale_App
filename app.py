@@ -27,7 +27,7 @@ if not filtered_hdb.empty:
 
 # Allow user to select a street name
 if not filtered_hdb.empty:
-    street_name = st.selectbox("Select a street name to find nearby hawker centres:", filtered_hdbs['street_name'].unique())
+    street_name = st.selectbox("Select a street name to find nearby hawker centres:", filtered_hdb['street_name'].unique())
 else:
     street_name = None
 
