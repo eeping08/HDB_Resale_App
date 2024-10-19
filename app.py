@@ -24,13 +24,15 @@ if not filtered_data.empty:
     st.write("You can afford the following houses:")
     st.dataframe(filtered_data)
     
-    # Visualization of price distribution
+# Data Visualization: Scatter Plot of Resale Price vs Remaining Lease
+if not filtered_hdbs.empty:
+    st.write("Scatter Plot: Resale Price vs Remaining Lease")
     plt.figure(figsize=(10, 6))
-    sns.histplot(filtered_data['resale_price'], bins=10, kde=True)
-    plt.title('Price Distribution of Affordable Houses')
-    plt.xlabel('resale_price')
-    plt.ylabel('flat_model')
-    st.pyplot(plt)  # Use Streamlit to display the plot
+    sns.scatterplot(data=filtered_hdbs, x='price', y='remaining_lease', hue='flat_type')
+    plt.xlabel("Resale Price ($)")
+    plt.ylabel("Remaining Lease (Years)")
+    plt.title("Resale Price vs Remaining Lease")
+    st.pyplot(plt)
 else:
     st.write("No houses found within your budget.")
 
