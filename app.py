@@ -53,7 +53,7 @@ def find_hawker_centres(street_name, hawker_data):
 # Display hawker centres based on user selection
 if page == "HDB Resale Search":
     st.title("Find HDBs and Nearby Hawker Centres")
-    user_budget = st.number_input("Enter your budget (SGD):", min_value=0, max_value=1000000, step=1000)
+    budget = st.number_input("Enter your budget (SGD):", min_value=0, max_value=1000000, step=1000)
     street_name = st.text_input("Enter the HDB street name to search for nearby hawker centres:")
 
 # Display HDBs within budget
