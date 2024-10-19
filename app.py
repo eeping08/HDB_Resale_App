@@ -41,10 +41,10 @@ if street_name:
     st.write(hawker_centres_nearby[['name', 'address']])
     
 # Data Visualization: Scatter Plot of Resale Price vs Remaining Lease
-if not filtered_data.empty:
+if not filtered_hdb.empty:
     st.write("Scatter Plot: Resale Price vs Remaining Lease")
     plt.figure(figsize=(10, 6))
-    sns.scatterplot(data=filtered_data, x='resale_price', y='remaining_lease', hue='flat_type')
+    sns.scatterplot(data=filtered_hdb, x='resale_price', y='remaining_lease', hue='flat_type')
     plt.xlabel("Resale Price ($)")
     plt.ylabel("Remaining Lease (Years)")
     plt.title("Resale Price vs Remaining Lease")
@@ -66,12 +66,12 @@ if page == "HDB Resale Search":
     street_name = st.text_input("Enter the HDB street name to search for nearby hawker centres:")
 
 # Display HDBs within budget
-filtered_hdbs = data[(data['resale_price'] <= budget)]
-st.write(filtered_hdbs)
+filtered_hdb = data[(data['resale_price'] <= budget)]
+st.write(filtered_hdb)
 
 # Create a dropdown for users to select a street name from the filtered results
 if not filtered_hdbs.empty:
-    street_name = st.selectbox("Select a street name to find nearby hawker centres:", filtered_hdbs['street_name'].unique())
+    street_name = st.selectbox("Select a street name to find nearby hawker centres:", filtered_hdb['street_name'].unique())
 else:
     street_name = None
 
