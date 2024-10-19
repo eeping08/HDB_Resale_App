@@ -41,6 +41,32 @@ flat_age = st.sidebar.slider("Select the maximum age of the flat:", 0, 99)
 # Sidebar for navigation
 page = st.sidebar.selectbox("Select a Page", ["Home", "About Us", "Methodology"])
 
+# Load hawker centres data
+hawker_data = gpd.read_file("path/to/hawker_centres.geojson")
+
+# Function to find hawker centres near selected HDB street
+def find_hawker_centres(street_name, hawker_data):
+    # Filter hawker centres based on street name or nearby areas
+    nearby_hawkers = hawker_data[hawker_data['address'].str.contains(street_name, case=False, na=False)]
+    return nearby_hawkers
+
+# Display hawker centres based on user selection
+if page == "HDB Resale Search":
+    st.title("Find HDBs and Nearby Hawker Centres")
+    user_budget = st.number_input("Enter your budget (SGD):", min_value=0, max_value=1000000, step=1000)
+    street_name = st.text_input("Enter the HDB street name to search for nearby hawker centres:")
+
+# Display HDBs within budget
+filtered_hdbs = data[(data['price'] <= user_budget)]
+st.write(filtered_hdbs)
+
+# Display hawker centres near the selected street name
+if street_name:
+    hawker_centres_nearby = find_hawker_centres(street_name, hawker_data)
+    st.write("Nearby Hawker Centres:")
+    st.write(hawker_centres_nearby[['name', 'address']])
+
+
 if page == "Methodology":
     st.title("Methodology")
     st.write("### Data Flows and Implementation Details")
