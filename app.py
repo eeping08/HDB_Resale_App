@@ -21,9 +21,9 @@ budget = st.number_input("Enter your budget:", min_value=0)
 filtered_data = data[data['resale_price'] <= budget]
 
 # Display the filtered data
-if not filtered_data.empty:
+if not filtered_hdb.empty:
     st.write("You can afford the following houses:")
-    st.dataframe(filtered_data)
+    st.dataframe(filtered_hdb)
 
 # Allow user to select a street name
 if not filtered_hdbs.empty:
