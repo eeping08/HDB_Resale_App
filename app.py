@@ -57,7 +57,7 @@ if page == "HDB Resale Search":
     street_name = st.text_input("Enter the HDB street name to search for nearby hawker centres:")
 
 # Display HDBs within budget
-filtered_hdbs = data[(data['resale_price'] <= user_budget)]
+filtered_hdbs = data[(data['resale_price'] <= budget)]
 st.write(filtered_hdbs)
 
 # Display hawker centres near the selected street name
