@@ -26,7 +26,7 @@ if not filtered_hdb.empty:
     st.dataframe(filtered_hdb)
 
 # Allow user to select a street name
-if not filtered_hdbs.empty:
+if not filtered_hdb.empty:
     street_name = st.selectbox("Select a street name to find nearby hawker centres:", filtered_hdbs['street_name'].unique())
 else:
     street_name = None
