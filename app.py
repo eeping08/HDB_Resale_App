@@ -104,7 +104,7 @@ st.write("""
 4. **Visualization**: Matplotlib and Seaborn libraries are used to create visual representations of the data.
 """)
 
-st.image("https://raw.githubusercontent.com/eeping08/HDB_Resale_App/refs/heads/main/Untitled%20Diagram.jpg")
+st.image("https://raw.githubusercontent.com/eeping08/HDB_Resale_App/refs/heads/main/Untitled%20Diagram.drawio.png")
 
 if page == "Methodology":
     st.title("Methodology")
@@ -127,7 +127,7 @@ if page == "Methodology":
     st.image("flowchart.png", caption="Flowchart for Data Flows and Use Cases")
 
 
-# Sample logic: Replace with your data loading and filtering
+# Replace data loading and filtering
 data = pd.DataFrame({
     "Location": ["Area A", "Area B", "Area C"],
     "Price": [300000, 400000, 500000],
