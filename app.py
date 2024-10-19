@@ -9,11 +9,12 @@ st.title("HDB Resale Flat Explorer")
 
 # Load the data
 data = pd.read_csv('hdb_data.csv')
+hawker_data = gpd.read_file("hawker_centres.geojson")
 
 # Display the data
 st.write(data.head())
 
-# Input for budget
+# Input for user budget
 budget = st.number_input("Enter your budget:", min_value=0)
 
 # Filter data based on budget
@@ -23,6 +24,21 @@ filtered_data = data[data['resale_price'] <= budget]
 if not filtered_data.empty:
     st.write("You can afford the following houses:")
     st.dataframe(filtered_data)
+
+# Allow user to select a street name
+if not filtered_hdbs.empty:
+    street_name = st.selectbox("Select a street name to find nearby hawker centres:", filtered_hdbs['street_name'].unique())
+else:
+    street_name = None
+
+# Display hawker centres near the selected street name
+def find_hawker_centres(street_name, hawker_data):
+return hawker_data[hawker_data['street_name'].str.contains(street_name, case=False)]
+
+if street_name:
+    hawker_centres_nearby = find_hawker_centres(street_name, hawker_data)
+    st.write("Nearby Hawker Centres:")
+    st.write(hawker_centres_nearby[['name', 'address']])
     
 # Data Visualization: Scatter Plot of Resale Price vs Remaining Lease
 if not filtered_data.empty:
@@ -42,16 +58,6 @@ flat_age = st.sidebar.slider("Select the maximum age of the flat:", 0, 99)
 
 # Sidebar for navigation
 page = st.sidebar.selectbox("Select a Page", ["Home", "About Us", "Methodology"])
-
-# Load hawker centres data
-hawker_data = gpd.read_file("hawker_centres.geojson")
-
-# Function to find hawker centres near selected HDB street
-def find_hawker_centres(street_name, hawker_data):
-    
-# Filter hawker centres based on street name or nearby areas
-nearby_hawkers = hawker_data[hawker_data['address'].str.contains(street_name, case=False, na=False)]
-return nearby_hawkers
 
 # Display hawker centres based on user selection
 if page == "HDB Resale Search":
