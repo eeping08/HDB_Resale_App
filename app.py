@@ -48,9 +48,10 @@ hawker_data = gpd.read_file("hawker_centres.geojson")
 
 # Function to find hawker centres near selected HDB street
 def find_hawker_centres(street_name, hawker_data):
-    # Filter hawker centres based on street name or nearby areas
-    nearby_hawkers = hawker_data[hawker_data['address'].str.contains(street_name, case=False, na=False)]
-    return nearby_hawkers
+    
+# Filter hawker centres based on street name or nearby areas
+nearby_hawkers = hawker_data[hawker_data['address'].str.contains(street_name, case=False, na=False)]
+return nearby_hawkers
 
 # Display hawker centres based on user selection
 if page == "HDB Resale Search":
@@ -83,7 +84,6 @@ if street_name:
 def find_hawker_centres(street_name, hawker_data):
     # filter hawker centres within a certain distance of the street
     return hawker_data[hawker_data['street_name'].str.contains(street_name, case=False)]
-
 
 if page == "Methodology":
     st.title("Methodology")
