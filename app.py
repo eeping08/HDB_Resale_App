@@ -25,7 +25,7 @@ if not filtered_data.empty:
     st.dataframe(filtered_data)
     
 # Data Visualization: Scatter Plot of Resale Price vs Remaining Lease
-if not filtered_hdbs.empty:
+if not filtered_data.empty:
     st.write("Scatter Plot: Resale Price vs Remaining Lease")
     plt.figure(figsize=(10, 6))
     sns.scatterplot(data=filtered_hdbs, x='price', y='remaining_lease', hue='flat_type')
