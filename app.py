@@ -14,6 +14,9 @@ hawker_data = gpd.read_file("hawker_centres.geojson")
 # Display the data
 st.write(data.head())
 
+#Debugging column
+st.write(hdb_data.columns)
+
 # Input for user budget
 budget = st.number_input("Enter your budget:", min_value=0)
 
