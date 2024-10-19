@@ -7,15 +7,20 @@ import geopandas as gpd
 # Title of the app
 st.title("HDB Resale Flat Explorer")
 
+# Load the HDB resale data
+@st.cache_data
+def load_data():
+    hdb_data = pd.read_csv('path/to/hdb_resale_data.csv') 
+    return hdb_data
+
+# Load the data
+hdb_data = load_data()
 # Load the data
 data = pd.read_csv('hdb_data.csv')
 hawker_data = gpd.read_file("hawker_centres.geojson")
 
 # Display the data
 st.write(data.head())
-
-#Debugging column
-st.write(hdb_data.columns)
 
 # Input for user budget
 budget = st.number_input("Enter your budget:", min_value=0)
