@@ -57,6 +57,18 @@ hawker_data = gpd.read_file("hawker_centres.geojson")
 # Check the data
 st.write(hawker_data.head())  
 
+def find_hawker_centres(street_name, hawker_data):
+    # Filter hawker centres based on the selected street name
+    filtered_hawker_centres = hawker_data[hawker_data['name'].str.contains(street_name, case=False, na=False)]
+    
+# Ensure to get coordinates (assuming 'geometry' column contains the points)
+    if not filtered_hawker_centres.empty:
+        # Extract latitude and longitude from the geometry
+        filtered_hawker_centres['latitude'] = filtered_hawker_centres.geometry.apply(lambda geom: geom.y)
+        filtered_hawker_centres['longitude'] = filtered_hawker_centres.geometry.apply(lambda geom: geom.x)
+        
+    return filtered_hawker_centres
+
 # Display hawker centres near the selected street name
 if street_name:  # this variable is defined based on user input
     hawker_centres_nearby = find_hawker_centres(street_name, hawker_data)
@@ -69,7 +81,8 @@ if street_name:  # this variable is defined based on user input
         st.write(hawker_centres_nearby[['name', 'address']])  # Show the list of hawker centres
         
 # Visualize the geometry on the map
-    st.map(hawker_centres_nearby.geometry.apply(lambda geom: [geom.y, geom.x]).tolist())
+        st.map(hawker_centres_nearby[['latitude', 'longitude']])
+
 
 # Sidebar for user input
 budget = st.sidebar.number_input("Enter your budget (SGD):", min_value=0)
