@@ -57,17 +57,6 @@ hawker_data = gpd.read_file("hawker_centres.geojson")
 # Check the data
 st.write(hawker_data.head())  
 
-def find_hawker_centres(street_name, hawker_data):
-    return hawker_data[hawker_data['name'].str.contains(street_name, case=False, na=False)]
-
-if not filtered_hdb.empty:
-    street_name = st.selectbox("Select a street name to find nearby hawker centres", filtered_hdb['street_name'].unique())
-
-if street_name:
-    hawker_centres_nearby = find_hawker_centres(street_name, hawker_data)
-    st.write("Nearby Hawker Centres:")
-    st.write(hawker_centres_nearby[['name', 'address']])
-
 # Display hawker centres near the selected street name
 if street_name:  # this variable is defined based on user input
     hawker_centres_nearby = find_hawker_centres(street_name, hawker_data)
