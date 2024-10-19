@@ -145,7 +145,7 @@ about_us = st.sidebar.button("About Us")
 methodology = st.sidebar.button("Methodology")
 
 if about_us:
-    st.write("**About Us**\n\nThis project helps users find affordable HDB resale flats based on their budget in Singapore.The prices of the houses sold in Year 2015 and Year 2016 are obtained from www.data.gov.sg.")
+    st.write("**About Us**\n\nThis project helps users find affordable HDB resale flats based on their budget in Singapore.The prices of the houses sold in Year 2015 and Year 2016 are obtained from www.data.gov.sg. The data includes the type of house and the level of the flat.")
 
 if methodology:
-    st.write("**Methodology**\n\nWe use data on resale flat prices and age of flat to provide insights on the cost of HDB flats around the central part of Singapore.")
+    st.write("**Methodology**\n\nWe use data on resale flat prices and age of flat to provide insights on the cost of HDB resale flats around the central part of Singapore. The year format in the CSV data is formated for the purpose of better data handling.")
