@@ -33,21 +33,6 @@ if not filtered_hdb.empty:
     st.write("You can afford the following houses:")
     st.dataframe(filtered_hdb)
 
-# Allow user to select a street name
-if not filtered_hdb.empty:
-    street_name = st.selectbox("Select a street name to find nearby hawker centres:", filtered_hdb['street_name'].unique())
-else:
-    street_name = None
-
-# Display hawker centres near the selected street name
-def find_hawker_centres(street_name, hawker_data):
-    return hawker_data[hawker_data['street_name'].str.contains(street_name, case=False)]
-
-if street_name:
-    hawker_centres_nearby = find_hawker_centres(street_name, hawker_data)
-    st.write("Nearby Hawker Centres:")
-    st.write(hawker_centres_nearby[['name', 'address']])
-    
 # Data Visualization: Scatter Plot of Resale Price vs Remaining Lease
 if not filtered_hdb.empty:
     st.write("Scatter Plot: Resale Price vs Remaining Lease")
@@ -59,6 +44,41 @@ if not filtered_hdb.empty:
     st.pyplot(plt)
 else:
     st.write("No houses found within your budget.")
+
+# Allow user to select a street name
+if not filtered_hdb.empty:
+    street_name = st.selectbox("Select a street name to find nearby hawker centres:", filtered_hdb['street_name'].unique())
+else:
+    street_name = None
+
+# Load hawker centres data
+hawker_data = gpd.read_file("hawker_centres.geojson")
+
+# Check the data
+st.write(hawker_data.head())  
+
+def find_hawker_centres(street_name, hawker_data):
+    return hawker_data[hawker_data['name'].str.contains(street_name, case=False, na=False)]
+
+if street_name:
+    hawker_centres_nearby = find_hawker_centres(street_name, hawker_data)
+    st.write("Nearby Hawker Centres:")
+    st.write(hawker_centres_nearby[['name', 'address']])
+
+# Display hawker centres near the selected street name
+if street_name:  # Ensure this variable is defined based on user input
+    hawker_centres_nearby = find_hawker_centres(street_name, hawker_data)
+
+    # Show a message if no hawker centres found
+    if hawker_centres_nearby.empty:
+        st.write("No nearby hawker centres found.")
+    else:
+        st.write("Nearby Hawker Centres:")
+        st.write(hawker_centres_nearby[['name', 'address']])  # Show the list of hawker centres
+        
+        # Visualize the geometry on the map
+        st.map(hawker_centres_nearby.geometry.apply(lambda geom: [geom.y, geom.x]).tolist())
+
 
 # Sidebar for user input
 budget = st.sidebar.number_input("Enter your budget (SGD):", min_value=0)
