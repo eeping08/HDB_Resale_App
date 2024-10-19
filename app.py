@@ -60,25 +60,27 @@ st.write(hawker_data.head())
 def find_hawker_centres(street_name, hawker_data):
     return hawker_data[hawker_data['name'].str.contains(street_name, case=False, na=False)]
 
+if not filtered_hdb.empty:
+    street_name = st.selectbox("Select a street name to find nearby hawker centres", filtered_hdb['street_name'].unique())
+
 if street_name:
     hawker_centres_nearby = find_hawker_centres(street_name, hawker_data)
     st.write("Nearby Hawker Centres:")
     st.write(hawker_centres_nearby[['name', 'address']])
 
 # Display hawker centres near the selected street name
-if street_name:  # Ensure this variable is defined based on user input
+if street_name:  # this variable is defined based on user input
     hawker_centres_nearby = find_hawker_centres(street_name, hawker_data)
 
-    # Show a message if no hawker centres found
+# Show a message if no hawker centres found
     if hawker_centres_nearby.empty:
         st.write("No nearby hawker centres found.")
     else:
         st.write("Nearby Hawker Centres:")
         st.write(hawker_centres_nearby[['name', 'address']])  # Show the list of hawker centres
         
-        # Visualize the geometry on the map
-        st.map(hawker_centres_nearby.geometry.apply(lambda geom: [geom.y, geom.x]).tolist())
-
+# Visualize the geometry on the map
+    st.map(hawker_centres_nearby.geometry.apply(lambda geom: [geom.y, geom.x]).tolist())
 
 # Sidebar for user input
 budget = st.sidebar.number_input("Enter your budget (SGD):", min_value=0)
