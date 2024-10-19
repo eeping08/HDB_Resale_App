@@ -18,7 +18,7 @@ st.write(data.head())
 budget = st.number_input("Enter your budget:", min_value=0)
 
 # Filter data based on budget
-filtered_data = data[data['resale_price'] <= budget]
+filtered_hdb = data[data['resale_price'] <= budget]
 
 # Display the filtered data
 if not filtered_hdb.empty:
