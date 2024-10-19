@@ -57,7 +57,7 @@ if page == "HDB Resale Search":
     street_name = st.text_input("Enter the HDB street name to search for nearby hawker centres:")
 
 # Display HDBs within budget
-filtered_hdbs = data[(data['price'] <= user_budget)]
+filtered_hdbs = data[(data['resale_price'] <= user_budget)]
 st.write(filtered_hdbs)
 
 # Display hawker centres near the selected street name
@@ -80,7 +80,7 @@ The application consists of two main use cases:
 
 st.write("### Implementation Details")
 st.write("""
-1. **Data Loading**: The application loads a CSV file containing the relevant data, including flat prices and ages.
+1. **Data Loading**: The application loads a CSV file containing the relevant data, including flat resale prices and ages.
 2. **User Interface**: Streamlit is used to create a user-friendly interface with input fields and buttons.
 3. **Data Processing**: Using Pandas, the application processes the data to filter and prepare it for visualization.
 4. **Visualization**: Matplotlib and Seaborn libraries are used to create visual representations of the data.
