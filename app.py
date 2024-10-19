@@ -28,7 +28,7 @@ if not filtered_data.empty:
 if not filtered_data.empty:
     st.write("Scatter Plot: Resale Price vs Remaining Lease")
     plt.figure(figsize=(10, 6))
-    sns.scatterplot(data=filtered_data, x='price', y='remaining_lease', hue='flat_type')
+    sns.scatterplot(data=filtered_data, x='resale_price', y='remaining_lease', hue='flat_type')
     plt.xlabel("Resale Price ($)")
     plt.ylabel("Remaining Lease (Years)")
     plt.title("Resale Price vs Remaining Lease")
