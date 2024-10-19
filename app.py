@@ -61,8 +61,8 @@ filtered_hdbs = data[(data['resale_price'] <= budget)]
 st.write(filtered_hdbs)
 
 # Create a dropdown for users to select a street name from the filtered results
-if not affordable_flats.empty:
-    street_name = st.selectbox("Select a street name to find nearby hawker centres:", affordable_flats['street_name'].unique())
+if not filtered_hdbs.empty:
+    street_name = st.selectbox("Select a street name to find nearby hawker centres:", filtered_hdbs['street_name'].unique())
 else:
     street_name = None
 
