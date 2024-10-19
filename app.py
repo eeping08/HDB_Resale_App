@@ -10,7 +10,7 @@ st.title("HDB Resale Flat Explorer")
 # Load the HDB resale data
 @st.cache_data
 def load_data():
-    hdb_data = pd.read_csv('path/to/hdb_resale_data.csv') 
+    hdb_data = pd.read_csv('hdb_data.csv') 
     return hdb_data
 
 # Load the data
