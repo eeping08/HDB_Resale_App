@@ -33,7 +33,7 @@ else:
 
 # Display hawker centres near the selected street name
 def find_hawker_centres(street_name, hawker_data):
-return hawker_data[hawker_data['street_name'].str.contains(street_name, case=False)]
+    return hawker_data[hawker_data['street_name'].str.contains(street_name, case=False)]
 
 if street_name:
     hawker_centres_nearby = find_hawker_centres(street_name, hawker_data)
