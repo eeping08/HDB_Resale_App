@@ -42,7 +42,7 @@ flat_age = st.sidebar.slider("Select the maximum age of the flat:", 0, 99)
 page = st.sidebar.selectbox("Select a Page", ["Home", "About Us", "Methodology"])
 
 # Load hawker centres data
-hawker_data = gpd.read_file("path/to/hawker_centres.geojson")
+hawker_data = gpd.read_file("hawker_centres.geojson")
 
 # Function to find hawker centres near selected HDB street
 def find_hawker_centres(street_name, hawker_data):
