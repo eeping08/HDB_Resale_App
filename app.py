@@ -29,7 +29,7 @@ if not filtered_data.empty:
     sns.histplot(filtered_data['resale_price'], bins=10, kde=True)
     plt.title('Price Distribution of Affordable Houses')
     plt.xlabel('resale_price')
-    plt.ylabel('Frequency')
+    plt.ylabel('flat_model')
     st.pyplot(plt)  # Use Streamlit to display the plot
 else:
     st.write("No houses found within your budget.")
