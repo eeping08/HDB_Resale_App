@@ -74,32 +74,10 @@ if not filtered_hdb.empty:
 else:
     street_name = None
 
-# Check if a street name has been selected
-if street_name:
-    hawker_centres_nearby = find_hawker_centres(street_name, hawker_data)
-    st.write("Nearby Hawker Centres:")
-    st.write(hawker_centres_nearby[['name', 'address']])
-
-# Display hawker centres near the selected street name
-if street_name:
-    hawker_centres_nearby = find_hawker_centres(street_name, hawker_data)
-    st.write("Nearby Hawker Centres:")
-    st.write(hawker_centres_nearby[['name', 'address']])
-
-def find_hawker_centres(street_name, hawker_data):
-    # filter hawker centres within a certain distance of the street
-    return hawker_data[hawker_data['street_name'].str.contains(street_name, case=False)]
-
 if page == "Methodology":
     st.title("Methodology")
     st.write("### Data Flows and Implementation Details")
     st.write("In this section, we will explain the data flows and implementation details.")
-
-st.write("""
-The application consists of two main use cases:
-- **User Input and Data Filtering**: Users input their budget, which is then used to filter the dataset of HDB resale flats. The application processes the input and returns a list of flats that fall within the specified budget.
-- **Data Visualization**: After filtering, the application provides a visualization of the price distribution of the affordable flats, helping users understand the market better.
-""")
 
 st.write("### Implementation Details")
 st.write("""
