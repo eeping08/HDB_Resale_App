@@ -61,7 +61,7 @@ selected_street = st.selectbox("Select a Street Name:", hdb_df['street_name'].un
 filtered_hdb= hdb_df[hdb_df['street_name'] == selected_street]
 
 # Show a table with the filtered `flat_model`
-if not filtered_flats.empty:
+if not filtered_hdb.empty:
     st.write("Flat Models for the selected street:")
     st.write(filtered_hdb[['flat_model']])
 else:
