@@ -73,9 +73,6 @@ if page == "HDB Resale Search":
     budget = st.number_input("Enter your budget (SGD):", min_value=0, max_value=1000000, step=1000)
     street_name = st.text_input("Enter the HDB street name to search for flat model in the selected street:")
 
-# Display HDBs within budget
-filtered_hdb = data[(data['resale_price'] <= budget)]
-st.write(filtered_hdb)
 
 if page == "Methodology":
     st.title("Methodology")
