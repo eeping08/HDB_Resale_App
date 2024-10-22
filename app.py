@@ -54,6 +54,9 @@ else:
 
 hdb_df = pd.DataFrame(data)
 
+# Add a select box for users to choose a street
+selected_street = st.selectbox("Select a Street Name:", hdb_df['street_name'].unique())
+
 # Filter the DataFrame based on the selected street
 filtered_hdb= hdb_df[hdb_df['street_name'] == selected_street]
 
@@ -71,21 +74,15 @@ flat_age = st.sidebar.slider("Select the maximum age of the flat:", 0, 99)
 # Sidebar for navigation
 page = st.sidebar.selectbox("Select a Page", ["Home", "About Us", "Methodology"])
 
-# Display hawker centres based on user selection
+# Display affordable HDBs based on user selection
 if page == "HDB Resale Search":
     st.title("Find HDBs and Nearby Hawker Centres")
     budget = st.number_input("Enter your budget (SGD):", min_value=0, max_value=1000000, step=1000)
-    street_name = st.text_input("Enter the HDB street name to search for nearby hawker centres:")
+    street_name = st.text_input("Enter the HDB street name to search for flat model in the selected street:")
 
 # Display HDBs within budget
 filtered_hdb = data[(data['resale_price'] <= budget)]
 st.write(filtered_hdb)
-
-# Create a dropdown for users to select a street name from the filtered results
-if not filtered_hdb.empty:
-    street_name = st.selectbox("Select a street name to find nearby hawker centres:", filtered_hdb['street_name'].unique())
-else:
-    street_name = None
 
 if page == "Methodology":
     st.title("Methodology")
