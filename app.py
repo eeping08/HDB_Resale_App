@@ -45,13 +45,6 @@ if not filtered_hdb.empty:
 else:
     st.write("No houses found within your budget.")
 
-# Allow user to select a street name
-if not filtered_hdb.empty:
-    street_name = st.selectbox("Select a street name to find flat_model:", filtered_hdb['street_name'].unique())
-else:
-    street_name = None
-
-
 hdb_df = pd.DataFrame(data)
 
 # Add a select box for users to choose a street
