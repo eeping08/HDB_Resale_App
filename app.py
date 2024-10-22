@@ -91,7 +91,7 @@ if page == "Methodology":
 
 # Display data and plot
 st.subheader("Filtered Flats")
-st.write(filtered_data)
+st.write(filtered_hdb)
 
 # About Us and Methodology pages
 about_us = st.sidebar.button("About Us")
