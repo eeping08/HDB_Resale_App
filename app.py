@@ -79,15 +79,6 @@ if page == "Methodology":
     st.write("### Data Flows and Implementation Details")
     st.write("In this section, we will explain the data flows and implementation details.")
 
-st.write("### Implementation Details")
-st.write("""
-1. **Data Loading**: The application loads a CSV file containing the relevant data, including flat resale prices and ages.
-2. **User Interface**: Streamlit is used to create a user-friendly interface with input fields and buttons.
-3. **Data Processing**: Using Pandas, the application processes the data to filter and prepare it for visualization.
-4. **Visualization**: Matplotlib and Seaborn libraries are used to create visual representations of the data.
-""")
-
-st.image("https://raw.githubusercontent.com/eeping08/HDB_Resale_App/refs/heads/main/Untitled%20Diagram.drawio.png")
 
 if page == "Methodology":
     st.title("Methodology")
@@ -97,27 +88,6 @@ if page == "Methodology":
     - **User Input and Data Filtering**: Users input their budget, which is then used to filter the dataset of HDB resale flats. The application processes the input and returns a list of flats that fall within the specified budget.
     - **Data Visualization**: After filtering, the application provides a visualization of the price distribution of the affordable flats, helping users understand the market better.
     """)
-
-    st.write("### Implementation Details")
-    st.write("""
-    1. **Data Loading**: The application loads a CSV file containing the relevant data, including flat prices and ages.
-    2. **User Interface**: Streamlit is used to create a user-friendly interface with input fields and buttons.
-    3. **Data Processing**: Using Pandas, the application processes the data to filter and prepare it for visualization.
-    4. **Visualization**: Matplotlib and Seaborn libraries are used to create visual representations of the data.
-    """)
-
-    # Display flowchart image
-    st.image("flowchart.png", caption="Flowchart for Data Flows and Use Cases")
-
-
-# Replace data loading and filtering
-data = pd.DataFrame({
-    "Location": ["Area A", "Area B", "Area C"],
-    "Price": [300000, 400000, 500000],
-    "Age": [10, 20, 30]
-})
-
-filtered_data = data[(data["Price"] <= budget) & (data["Age"] <= flat_age)]
 
 # Display data and plot
 st.subheader("Filtered Flats")
@@ -132,3 +102,16 @@ if about_us:
 
 if methodology:
     st.write("**Methodology**\n\nWe use data on resale flat prices and age of flat to provide insights on the cost of HDB resale flats around the central part of Singapore. The year format in the CSV data is formated for the purpose of better data handling.")
+
+    st.write("### Implementation Details")
+    st.write("""
+    1. **Data Loading**: The application loads a CSV file containing the relevant data, including flat prices and ages.
+    2. **User Interface**: Streamlit is used to create a user-friendly interface with input fields and buttons.
+    3. **Data Processing**: Using Pandas, the application processes the data to filter and prepare it for visualization.
+    4. **Visualization**: Matplotlib and Seaborn libraries are used to create visual representations of the data.
+    """)
+
+    # Display flowchart image
+    st.image("flowchart.png", caption="Flowchart for Data Flows and Use Cases")
+
+st.image("https://raw.githubusercontent.com/eeping08/HDB_Resale_App/refs/heads/main/Untitled%20Diagram.drawio.png")
