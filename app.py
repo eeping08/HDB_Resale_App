@@ -111,7 +111,5 @@ if methodology:
     4. **Visualization**: Matplotlib and Seaborn libraries are used to create visual representations of the data.
     """)
 
-    # Display flowchart image
-    st.image("flowchart.png", caption="Flowchart for Data Flows and Use Cases")
-
+# Display flowchart image
 st.image("https://raw.githubusercontent.com/eeping08/HDB_Resale_App/refs/heads/main/Untitled%20Diagram.drawio.png")
