@@ -47,9 +47,22 @@ else:
 
 # Allow user to select a street name
 if not filtered_hdb.empty:
-    street_name = st.selectbox("Select a street name to find nearby hawker centres:", filtered_hdb['street_name'].unique())
+    street_name = st.selectbox("Select a street name to find flat_model:", filtered_hdb['street_name'].unique())
 else:
     street_name = None
+
+
+hdb_df = pd.DataFrame(data)
+
+# Filter the DataFrame based on the selected street
+filtered_hdb= hdb_df[hdb_df['street_name'] == selected_street]
+
+# Show a table with the filtered `flat_model`
+if not filtered_flats.empty:
+    st.write("Flat Models for the selected street:")
+    st.write(filtered_hdb[['flat_model']])
+else:
+    st.write("No flats found for the selected street.")
 
 # Sidebar for user input
 budget = st.sidebar.number_input("Enter your budget (SGD):", min_value=0)
