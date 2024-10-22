@@ -114,5 +114,5 @@ if methodology:
 # Display flowchart image
 st.image("https://raw.githubusercontent.com/eeping08/HDB_Resale_App/refs/heads/main/Untitled%20Diagram.drawio.png")
 
-st.write("**Methodology**\n\nAfter users select the street name, they will be able to find out the flat type and the number of rooms that they can afford for their budget. They will also be able to see the level and block of the resale flat in the table.)
+st.write("**Methodology**\n\nAfter users select the street name, they will be able to find out the flat type and the number of rooms that they can afford for their budget. They will also be able to see the level and block of the resale flat in the table.")
 st.image("https://raw.githubusercontent.com/eeping08/HDB_Resale_App/refs/heads/main/Untitled%20Diagram2.jpg")
