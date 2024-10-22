@@ -56,7 +56,7 @@ filtered_hdb= hdb_df[hdb_df['street_name'] == selected_street]
 # Show a table with the filtered `flat_model`
 if not filtered_hdb.empty:
     st.write("Flat Models for the selected street:")
-    st.write(filtered_hdb[['flat_model']])
+    st.write(filtered_hdb[['flat_model', 'flat_type', 'block', 'storey_range']])
 else:
     st.write("No flats found for the selected street.")
 
@@ -69,7 +69,7 @@ page = st.sidebar.selectbox("Select a Page", ["Home", "About Us", "Methodology"]
 
 # Display affordable HDBs based on user selection
 if page == "HDB Resale Search":
-    st.title("Find HDBs and Nearby Hawker Centres")
+    st.title("Find HDBs and flat_model")
     budget = st.number_input("Enter your budget (SGD):", min_value=0, max_value=1000000, step=1000)
     street_name = st.text_input("Enter the HDB street name to search for flat model in the selected street:")
 
